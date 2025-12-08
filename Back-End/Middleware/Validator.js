@@ -1,5 +1,7 @@
 const { checkSchema } = require('express-validator')
 
+
+
 const RegisterValidator = checkSchema({
     username: {
         in: ["body"],

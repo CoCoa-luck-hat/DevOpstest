@@ -147,9 +147,7 @@ onMounted(() => {
 
                             </v-text-field>
 
-                            <button class="btn-add" @click="CreateUser = true">
-                                เพิ่มผู้ใช้
-                            </button>
+  
                         </div>
                     </div>
 
@@ -163,7 +161,6 @@ onMounted(() => {
                                             <th>ชื่อผู้ใช้</th>
                                             <th>ตำแหน่ง</th>
                                             <th>สร้างเมือ</th>
-                                            <th>เครื่องมือ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -187,16 +184,7 @@ onMounted(() => {
                                                         {{ user.raw.Date_At }}
                                                     </p>
                                                 </td>
-                                                <td>
-                                                    <div class="d-flex ga-2" style="width: 100px;">
-                                                        <button class="btn-more" @click="EditModal(user.raw)">
-                                                            แก้ไข
-                                                        </button>
-                                                        <button class="btn-error" @click="Delete(user.raw.id_user)">
-                                                            ลบ
-                                                        </button>
-                                                    </div>
-                                                </td>
+                                               
                                             </tr>
 
                                         </template>
@@ -212,36 +200,7 @@ onMounted(() => {
             </v-col>
 
         </v-row>
-        <v-dialog v-model="CreateUser" width="auto">
-            <div class="Box-Card">
-                <h1 class="text-teal-accent-3">เพิ่มผู้ใช้</h1>
-                <v-form ref="form" class="d-flex flex-column w-100 ga-1 mt-4">
-                    <v-text-field label="ชื่อผู้ใช้" :rules="[v => !!v || 'กรุณากรอกชื่อผู้ใช้']"
-                        v-model="username"></v-text-field>
-                    <v-text-field label="อีเมล" :rules="[v => !!v || 'กรุณากรอกอีเมล']" v-model="email"></v-text-field>
-                    <v-text-field label="รหัสผ่าน" :rules="[v => !!v || 'กรุณากรอกรหัสผ่าน']"
-                        v-model="password"></v-text-field>
-                    <v-select label="ตำแหน่ง" :items="['แอดมิน', 'ผู้จัดการ', 'ผู้ใช้']" v-model="role"></v-select>
-                    <v-btn color="teal-accent-3" class="text-white" @click="Submit">เพิ่มผู้ใช้</v-btn>
-                </v-form>
-            </div>
-        </v-dialog>
-        <v-dialog v-model="EditUser" width="auto">
-            <div class="Box-Card">
-                <h1 class="text-teal-accent-3">แก้ไขผู้ใช้</h1>
-                <v-form ref="formEdit" class="d-flex flex-column w-100 ga-1 mt-4">
-                    <v-text-field label="ชื่อผู้ใช้" :rules="[v => !!v || 'กรุณากรอกชื่อผู้ใช้']"
-                        v-model="UserStore.selectUser.username"></v-text-field>
-                    <v-text-field label="อีเมล" :rules="[v => !!v || 'กรุณากรอกอีเมล']"
-                        v-model="UserStore.selectUser.email"></v-text-field>
-                    <v-text-field label="รหัสผ่าน" :rules="[v => !!v || 'กรุณากรอกรหัสผ่าน']"
-                        v-model="UserStore.selectUser.password"></v-text-field>
-                    <v-select label="ตำแหน่ง" :items="['แอดมิน', 'ผู้จัดการ', 'ผู้ใช้']"
-                        v-model="UserStore.selectUser.role"></v-select>
-                    <v-btn color="teal-accent-3" class="text-white" @click="SubmitEdit">แก้ไขผู้ใช้</v-btn>
-                </v-form>
-            </div>
-        </v-dialog>
+
     </div>
 </template>
 

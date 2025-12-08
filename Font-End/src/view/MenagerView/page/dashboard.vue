@@ -186,7 +186,7 @@ onMounted(() => {
                             <p style="font-size: 14px;" class="text-grey">ทั้งหมด {{ UserStore.users.length }} คน
                             </p>
                         </div>
-                        <router-link :to="{name:'admin-users'}" class="btn-more">
+                        <router-link :to="{name:'menager-users'}" class="btn-more">
                             ดูทั้งหมด
                         </router-link>
                     </div>

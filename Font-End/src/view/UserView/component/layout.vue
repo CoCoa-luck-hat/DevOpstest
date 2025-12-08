@@ -1,7 +1,7 @@
 <script setup>
 import { useRoute } from 'vuetify/lib/composables/router';
 import { useIndexStore } from '@/stores';
-import { AdminRouter } from '@/router/ViewRouter/AdminRouter';
+import {UserRouter} from '@/router/ViewRouter/UserRouter';
 import { useToastStore } from '@/stores/toast';
 import { ref } from 'vue';
 
@@ -40,10 +40,10 @@ const Submit = async () => {
 <template>
     <div class="Div-main">
         <aside class="aside">
-            <h1 class="text-h5" style="font-weight: 600; text-align: center;">DashBoard Admin</h1>
+            <h1 class="text-h5" style="font-weight: 600; text-align: center;">DashBoard User</h1>
             <v-divider class="w-75 mx-auto my-1"></v-divider>
             <div class="d-flex flex-column ga-2 mt-4">
-                <router-link v-for="routerItem in AdminRouter" :to="{ name: routerItem.name }" class="btn-aside"
+                <router-link v-for="routerItem in UserRouter" :to="{ name: routerItem.name }" class="btn-aside"
                     :style="routerItem.name === route.name ? 'background-color: rgb(235, 235, 235)' : ''"
                     style="text-decoration: none;">
                     <i class="mdi  text-h5 px-3 py-2"

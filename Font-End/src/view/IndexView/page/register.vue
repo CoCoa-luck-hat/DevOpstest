@@ -68,5 +68,6 @@ const Submit = async () => {
     align-items: center;
     max-width: 320px;
     width: 100%;
+        box-shadow: 0px 2px 4px #0000004f;
 }
 </style>

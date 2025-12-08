@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { api } from "@/api/axios";
+import { useToastStore } from "./toast";
 import router from "@/router";
 
 export const useIndexStore = defineStore("Index", {
@@ -28,6 +29,8 @@ export const useIndexStore = defineStore("Index", {
         this.user = response.data.user;
         return true;
       } catch (error) {
+        const ToastStore = useToastStore()
+        ToastStore.PlusToast('กรุณาเข้าสู่ระบบใหม่','bg-red')
         localStorage.removeItem("token");
         this.user = [];
         return false;
@@ -38,5 +41,9 @@ export const useIndexStore = defineStore("Index", {
       this.user = [];
       router.push({ name: "login" });
     },
+    async EditProfile(data){
+      const response = await api.put("/profile", data);
+      return response.data;
+    }
   },
 });

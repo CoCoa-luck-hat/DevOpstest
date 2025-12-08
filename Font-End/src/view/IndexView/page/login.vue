@@ -26,6 +26,11 @@ const Submit = async () => {
 
             if (IndexStore.user.role === 'admin') {
                 router.push({ name: 'admin-dashboard' })
+            }else if(IndexStore.user.role === 'menager') {
+                router.push({ name: 'menager-dashboard' })
+            }else{
+                router.push({ name: 'user-dashboard' })
+
             }
 
         } catch (error) {
@@ -67,5 +72,6 @@ const Submit = async () => {
     align-items: center;
     max-width: 320px;
     width: 100%;
+        box-shadow: 0px 2px 4px #0000004f;
 }
 </style>

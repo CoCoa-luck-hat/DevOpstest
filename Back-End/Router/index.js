@@ -105,4 +105,20 @@ router.get("/profile", VerifyToken, async (req, res) => {
   }
 });
 
+router.put('/profile', VerifyToken, async (req, res) => {
+  try {
+    const { id_user } = req.user
+    const { username, email, password } = req.body
+    const response = await pool.execute("UPDATE `users` SET `username` = ?, `email` = ?, `password` = ? WHERE `users`.`id_user` = ?", [username, email, password, id_user])
+    res.status(200).json({
+      message: "แก้ไขข้อมูลสำเร็จ",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "เกิดข้อผิดพลาดบางอย่างจากเซิฟเวอร์",
+    });
+  }
+})
+
 module.exports = router;

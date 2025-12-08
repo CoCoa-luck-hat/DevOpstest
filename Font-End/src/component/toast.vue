@@ -20,6 +20,7 @@ const ToastStore = useToastStore()
         display: flex;
         flex-direction: column-reverse;
         gap: 5px;
+        z-index: 999999999;
     }
     .alert{
         color: white;
