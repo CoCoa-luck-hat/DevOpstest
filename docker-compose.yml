@@ -50,6 +50,8 @@ services:
       DB_USER: user
       DB_PASSWORD: 1234
       DB_PORT: 3306
+    volumes:
+      - backend_uploads:/app/uploads
     depends_on:
       db:
         condition: service_healthy
@@ -74,4 +76,5 @@ networks:
 
 volumes:
   mysql_data4:
+  backend_uploads:
 

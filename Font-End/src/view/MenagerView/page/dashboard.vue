@@ -4,6 +4,7 @@ import { onMounted, ref } from 'vue';
 import { useToastStore } from '@/stores/toast';
 import { useReportsStore } from '@/stores/system/reports';
 import { useUsersStore } from '@/stores/system/users';
+import { getImageUrl } from '@/utils/imageUrl';
 
 const ToastStore = useToastStore()
 const IotStore = useIotStore()
@@ -233,7 +234,7 @@ onMounted(() => {
                                     <template v-for="report in items" :key="report.raw.id_report">
                                         <v-col cols="3">
                                             <v-card class="Box-Card" style="padding: 0px; ;">
-                                                <v-img :src="`/upload-photo/${report.raw.photo}`" cover height="200px"
+                                                <v-img :src="getImageUrl(report.raw.photo)" cover height="200px"
                                                     width="100%"></v-img>
                                                 <div class="pa-3 w-100 h-100"
                                                     style="display: flex; flex-direction: column; ">
@@ -295,7 +296,7 @@ onMounted(() => {
 
         <v-dialog v-model="ViewReport" width="auto">
             <div class="Box-Card" style="width: 500px; padding: 20px;">
-                <v-img :src="`/upload-photo/${Reports.selectReport.photo}`" style="border-radius: 10px;" cover
+                <v-img :src="getImageUrl(Reports.selectReport.photo)" style="border-radius: 10px;" cover
                     height="300px" width="100%"></v-img>
                 <div class="pa-3 w-100 h-100" style="display: flex; flex-direction: column; ">
                     <p class="text-grey" style="font-size: 14px;">{{ Reports.selectReport.Date_At }}</p>

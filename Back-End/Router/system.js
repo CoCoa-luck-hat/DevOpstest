@@ -25,7 +25,7 @@ const allowOnlyAdminAndUser = (req, res, next) => {
 }
 
 const storage = multer.diskStorage({
-  destination: '../Font-End/public/upload-photo',
+  destination: '/app/uploads',
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname))
   }

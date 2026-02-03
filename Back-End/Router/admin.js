@@ -21,7 +21,7 @@ const allowOnlyAdmin = (req, res, next) => {
 }
 
 const storage = multer.diskStorage({
-  destination: '../Font-End/public/upload-photo',
+  destination: '/app/uploads',
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname))
   }
@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage })
 
-router.post("/admin/user",VerifyToken, RegisterValidator, async (req, res) => {
+router.post("/admin/user", VerifyToken, RegisterValidator, async (req, res) => {
   const Validator_error = validationResult(req);
   if (!Validator_error.isEmpty()) {
     return res.status(400).json({
@@ -62,7 +62,7 @@ router.post("/admin/user",VerifyToken, RegisterValidator, async (req, res) => {
   }
 });
 
-router.put("/admin/user/:id",VerifyToken, RegisterValidator, async (req, res) => {
+router.put("/admin/user/:id", VerifyToken, RegisterValidator, async (req, res) => {
   const Validator_error = validationResult(req);
   if (!Validator_error.isEmpty()) {
     return res.status(400).json({
@@ -88,18 +88,18 @@ router.put("/admin/user/:id",VerifyToken, RegisterValidator, async (req, res) =>
   }
 });
 
-router.delete("/admin/user/:id",VerifyToken,async(req,res)=>{
+router.delete("/admin/user/:id", VerifyToken, async (req, res) => {
   try {
-    
+
     const id = req.params.id
     const response = await pool.execute("DELETE FROM users WHERE `users`.`id_user` = ?",
       [id]
     )
-    
+
     res.status(200).json({
-        message:'ลบสำเร็จ'
+      message: 'ลบสำเร็จ'
     })
-    
+
   } catch (error) {
     console.log(error);
     res.status(500).json({

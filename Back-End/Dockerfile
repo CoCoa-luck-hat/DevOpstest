@@ -8,6 +8,8 @@ RUN npm ci --only=production
 
 COPY . .
 
+RUN mkdir -p /app/uploads
+
 EXPOSE 8000
 
 CMD [ "node", "index.js" ]
